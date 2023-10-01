@@ -1,0 +1,10 @@
+
+
+.prompt {
+    display: none;
+  }
+  
+  .card:hover .prompt {
+    display: block;
+  }
+  
