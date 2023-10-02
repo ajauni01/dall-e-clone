@@ -1,7 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import OpenAI from "openai";
-
+import openai from "openai/index.js";
 // populate the environental variables
 dotenv.config();
 // create an express framework instance
