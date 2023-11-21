@@ -23,9 +23,6 @@ DALL·E Clone brings the advanced capabilities of the DALL·E API to users, allo
 - **Node.js**: Server-side runtime environment for building scalable applications.
 - **Cloudinary**: Cloud-based image and video management solution for efficient storage and delivery.
 
-## Project Link
-
-[Explore the live project](https://dall-e-clone-final-site.vercel.app/)
 
 ## Image Attribution
 
