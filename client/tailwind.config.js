@@ -27,5 +27,4 @@ export default {
   plugins: [],
 };
 
-// TODO: understand the tailwind.config.js properties
-// TODO: understand the responsiveness of this clone
+

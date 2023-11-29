@@ -38,7 +38,4 @@ const startServer = async () => {
 };
 startServer();
 
-// database userName: dall-e
-// database password: mznzx5T1M9hi9L1u
-// TODO: setup environmental variables for the mongoDB database and password using the .env file
-// TODO: configure export defaults from the 'postRoutes.js' and 'dalleRoutes.js'
+

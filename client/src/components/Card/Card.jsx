@@ -45,4 +45,4 @@ const Card = ({ _id, name, prompt, photo }) => {
 };
 
 export default Card;
-// TODO: explore the file path from the 'utils' folder
+

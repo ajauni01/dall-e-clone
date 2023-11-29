@@ -176,8 +176,4 @@ const CreatePost = () => {
 
 export default CreatePost;
 
-// TODO: understand the reason behind using the 'isSurpriseMe' props
-// TODO: explore the setForm({...form, [e.target.name]: e.target.value})
-// TODO: explore the necessity of using ' value={form.name}'
-// TODO: deep dive into the mechanism of using async... await
-// TODO: explore handleSurpriseMe function mechanism
+

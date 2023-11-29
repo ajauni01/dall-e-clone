@@ -15,5 +15,4 @@ export async function downloadImage(_id, photo) {
   FileSaver.saveAs(photo, `download-${_id}.jpg`);
 }
 
-// TODO: explore if(randomPrompt === prompt) return getRandomPrompt(prompt);
-// TODO: understand the FileSaver library
+

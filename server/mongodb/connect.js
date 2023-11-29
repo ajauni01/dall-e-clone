@@ -12,4 +12,4 @@ const connectDB = (url) => {
 
 export default connectDB;
 
-// TODO: understand the usage and mechanism of 'strictQuery'
+
