@@ -1,4 +1,3 @@
-import cors from "cors";
 import * as dotenv from "dotenv";
 import express from "express";
 import connectDB from "./mongodb/connect.js";
@@ -10,26 +9,12 @@ dotenv.config();
 
 // create an instance of the express application
 const app = express();
-// setup CORS middleware
-app.use(cors());
 
 // configure express to parse JSON requests
 app.use(express.json({ limit: "50mb" }));
 
-// API routes
-app.use("/api/v1/post", postRoutes);
-app.use("/api/v1/dalle", dalleRoutes);
-
-// general routes
-app.get("/", async (req, res) => {
-  res.send("Hello from DALL-E Cloneaazzzzaaaa");
-});
-
-// connect to mongoDB
-connectDB(process.env.MONGODB_URL);
-
-// CORS function
-const allowCors = (fn) => async (req, res) => {
+// CORS middleware
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -44,11 +29,23 @@ const allowCors = (fn) => async (req, res) => {
     res.status(200).end();
     return;
   }
-  return await fn(req, res);
-};
+  next();
+});
 
-// Export the serverless function
-export default allowCors((req, res) => {
-  // Forward the request and response objects to Express
-  app(req, res);
+// API routes
+app.use("/api/v1/post", postRoutes);
+app.use("/api/v1/dalle", dalleRoutes);
+
+// general routes
+app.get("/", async (req, res) => {
+  res.send("Hello from DALL-E Cloneaazzzzaaaa");
+});
+
+// connect to mongoDB
+connectDB(process.env.MONGODB_URL);
+
+// Start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port http://localhost:${port}`);
 });
