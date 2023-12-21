@@ -37,7 +37,7 @@ app.options("*", cors()); // Respond to preflight requests
 connectDB(process.env.MONGODB_URL);
 
 // Start the server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
