@@ -25,17 +25,30 @@ app.get("/", async (req, res) => {
   res.send("Hello from DALL-E Cloneaazzzzaaaa");
 });
 
-// function to listen to the port
-const startServer = async () => {
-  // connect to mongoDB
-  try {
-    connectDB(process.env.MONGODB_URL);
-    app.listen(3000, () =>
-      console.log("Server is running on port http://localhost:3000")
-    );
-  } catch (error) {
-    console.log(error);
+// connect to mongoDB
+connectDB(process.env.MONGODB_URL);
+
+// CORS function
+const allowCors = (fn) => async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+  );
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
   }
+  return await fn(req, res);
 };
-// call the startServer function
-startServer();
+
+// Export the serverless function
+module.exports = allowCors((req, res) => {
+  // Forward the request and response objects to Express
+  app(req, res);
+});
