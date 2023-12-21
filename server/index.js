@@ -3,7 +3,7 @@ import express from "express";
 import connectDB from "./mongodb/connect.js";
 import dalleRoutes from "./routes/dalleRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
-import cors from "cors"; // Import the cors package
+import cors from "cors";
 
 // Load environment variables
 dotenv.config();
@@ -15,7 +15,11 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 
 // Use cors middleware to handle CORS
-app.use(cors()); // This will handle CORS for all routes
+app.use(cors({
+  origin: "https://dall-e-clone-client-lyart.vercel.app/",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true // Required if you're sending cookies or authentication headers
+}));
 
 // API routes
 app.use("/api/v1/post", postRoutes);
@@ -25,6 +29,9 @@ app.use("/api/v1/dalle", dalleRoutes);
 app.get("/", async (req, res) => {
   res.send("Hello from DALL-E Cloneaazzzzaaaa");
 });
+
+// Handle OPTIONS requests
+app.options("*", cors()); // Respond to preflight requests
 
 // Connect to MongoDB
 connectDB(process.env.MONGODB_URL);
