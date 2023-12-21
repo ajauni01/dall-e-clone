@@ -11,7 +11,7 @@ dotenv.config();
 // create an instance of the express application
 const app = express();
 // setup CORS middleware
-app.use(cors());
+app.options('*', cors())
 // configure express to parse JSON requests
 app.use(express.json({ limit: "50mb" }));
 
