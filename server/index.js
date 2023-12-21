@@ -48,7 +48,7 @@ const allowCors = (fn) => async (req, res) => {
 };
 
 // Export the serverless function
-module.exports = allowCors((req, res) => {
+export default allowCors((req, res) => {
   // Forward the request and response objects to Express
   app(req, res);
 });
