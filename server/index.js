@@ -3,45 +3,30 @@ import express from "express";
 import connectDB from "./mongodb/connect.js";
 import dalleRoutes from "./routes/dalleRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import cors from "cors"; // Import the cors package
 
-// load environment variables
+// Load environment variables
 dotenv.config();
 
-// create an instance of the express application
+// Create an instance of the express application
 const app = express();
 
-// configure express to parse JSON requests
+// Configure express to parse JSON requests
 app.use(express.json({ limit: "50mb" }));
 
-// CORS middleware
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  );
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
-  next();
-});
+// Use cors middleware to handle CORS
+app.use(cors()); // This will handle CORS for all routes
 
 // API routes
 app.use("/api/v1/post", postRoutes);
 app.use("/api/v1/dalle", dalleRoutes);
 
-// general routes
+// General routes
 app.get("/", async (req, res) => {
   res.send("Hello from DALL-E Cloneaazzzzaaaa");
 });
 
-// connect to mongoDB
+// Connect to MongoDB
 connectDB(process.env.MONGODB_URL);
 
 // Start the server

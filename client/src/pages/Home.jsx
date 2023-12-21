@@ -22,7 +22,7 @@ const Home = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          "https://dall-e-clone-server-three.vercel.app/api/v1/post",
+          "https://dall-e-clone-server-smoky.vercel.app/api/v1/post",
           {
             method: "GET",
             headers: {
