@@ -20,7 +20,7 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          "https://dall-e-clone-server-1k0y6mhbi-ajauni01.vercel.app/api/v1/dalle",
+          "https://dall-e-clone-server-mj3kzml2d-ajauni01.vercel.app/api/v1/dalle",
           {
             method: "POST",
             headers: {
@@ -50,7 +50,7 @@ const CreatePost = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://dall-e-clone-server-1k0y6mhbi-ajauni01.vercel.app/api/v1/post",
+          "https://dall-e-clone-server-mj3kzml2d-ajauni01.vercel.app/api/v1/post",
           {
             method: "POST",
             headers: {
@@ -175,5 +175,3 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-
-
