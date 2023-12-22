@@ -26,7 +26,7 @@ const Card = ({ _id, name, prompt, photo }) => {
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-full object-cover bg-green-700 flex justify-center items-center text-white text-xs font-bold">
               {/* show the first alphabet of the user name above the picture only when name exists */}
-              {name && name[0]}
+              {name[0]}
             </div>
             <div>
               <p className="text-white text-sm">{name}</p>
