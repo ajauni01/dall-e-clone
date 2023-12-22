@@ -14,13 +14,8 @@ const app = express();
 // Configure express to parse JSON requests
 app.use(express.json({ limit: "50mb" }));
 
-const corsOptions = {
-  origin: "https://dall-e-clone-client-lyart.vercel.app",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-// update cors to allow requests from the client
-app.options("*", cors(corsOptions));
+// configure cors
+app.use(cors());
 
 // API routes
 app.use("/api/v1/post", postRoutes);

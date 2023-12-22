@@ -1,16 +1,28 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "./index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/v1/post",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
       "dest": "./index.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://dall-e-clone-client-lyart.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
+      }
+    },
+    {
+      "src": "/api/v1/dalle",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "dest": "./index.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://dall-e-clone-client-lyart.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
+      }
+    },
+    {
+      "src": "/(.*)",
       "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "dest": "./index.js",
       "headers": {
         "Access-Control-Allow-Origin": "*"
       }
