@@ -15,11 +15,7 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 
 // Use cors middleware to handle CORS
-app.use(cors({
-  origin: "https://dall-e-clone-client-lyart.vercel.app/",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true // Required if you're sending cookies or authentication headers
-}));
+app.use(cors());
 
 // API routes
 app.use("/api/v1/post", postRoutes);
