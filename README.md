@@ -2,7 +2,7 @@
 
 Welcome to the DALL·E Clone, a cutting-edge application developed using the MERN (MongoDB, Express.js, React, Node.js) Stack. This powerful platform leverages the latest DALL·E API to generate images based on user prompts.
 
-[Explore the live project](https://dall-e-clone-final-site.vercel.app/)
+[Explore the live project](https://dall-e-clone-client-seven.vercel.app/)
 
 ## Overview
 
