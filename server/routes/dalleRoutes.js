@@ -1,8 +1,10 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import OpenAI from "openai";
+import cors from "cors";
 // populate the environental variables
 dotenv.config();
+
 // create an express framework instance
 const router = express.Router();
 // new method
