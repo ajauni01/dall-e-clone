@@ -11,7 +11,7 @@ dotenv.config();
 // Create an instance of the express application
 const app = express();
 // Add the CORS middleware
-app.use(cors());
+app.use(cors({origin: "http://localhost:5173"}));
 // origin: "https://dall-e-clone-client-seven.vercel.app"
 // Configure express to parse JSON requests
 app.use(express.json({ limit: "50mb" }));
