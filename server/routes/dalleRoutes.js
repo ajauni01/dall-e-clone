@@ -1,7 +1,6 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import OpenAI from "openai";
-import cors from "cors";
 // populate the environental variables
 dotenv.config();
 
@@ -26,6 +25,7 @@ router.route("/").post(async (req, res) => {
       response_format: "b64_json",
     });
     const image = aiResponse.data[0].b64_json;
+    console.log("Image", image);
     res.status(200).json({ photo: image });
   } catch (error) {
     if (error instanceof OpenAI.APIError) {
