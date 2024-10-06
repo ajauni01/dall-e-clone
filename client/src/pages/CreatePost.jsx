@@ -30,7 +30,6 @@ const CreatePost = () => {
           }
         );
         const data = await response.json();
-        console.log("data from the backend", data);
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
         console.log(form);
       } catch (error) {

@@ -7,9 +7,8 @@ dotenv.config();
 // create an express framework instance
 const router = express.Router();
 // new method
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = new OpenAI();
+export const maxDuration = 300 * 1000; // 5 minutes
 
 // test route
 router.route("/").get((req, res) => {
@@ -19,14 +18,15 @@ router.route("/").get((req, res) => {
 // post route
 router.route("/").post(async (req, res) => {
   try {
-    const { prompt } = req.body;
-    const aiResponse = await openai.images.generate({
+    const { prompt } = req?.body;
+    const image = await openai.images.generate({
+      model: "dall-e-3",
       prompt,
+      style: "natural",
       response_format: "b64_json",
     });
-    const image = aiResponse.data[0].b64_json;
-    console.log("Image", image);
-    res.status(200).json({ photo: image });
+    // const image = aiResponse.data[0].b64_json;
+    res.status(200).json({ photo: image.data[0].b64_json });
   } catch (error) {
     if (error instanceof OpenAI.APIError) {
       console.error(error.status); // e.g. 401
